@@ -29,3 +29,17 @@ void print_pokedex(Pokedex* pokedex)
         printf("\n");
     }
 }
+
+unsigned char add_pokemon_to_pokedex(Pokemon *pokemon, Pokedex *pokedex)
+{
+    pokedex->pokemons = realloc(pokedex->pokemons, pokedex->seen_pokemons * sizeof pokedex->pokemons);
+    if (!pokedex->pokemons) return EXIT_FAILURE;
+
+    pokedex->pokemons[pokedex->seen_pokemons - 1] = pokemon;
+
+    pokedex->seen_pokemons++;
+    pokedex->unseen_pokemons--;
+
+    return EXIT_SUCCESS;
+} 
+
