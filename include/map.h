@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "structs.h"
+
+#define ROWS 100
+#define COLUMNS 300
 
 static int HASH[] = {208,34,231,213,32,248,233,56,161,78,24,140,71,48,140,254,245,255,247,247,40,
                      185,248,251,245,28,124,204,204,76,36,1,107,28,234,163,202,224,245,128,167,204,
@@ -26,3 +30,7 @@ float noise2d(float x, float y, int seed);
 float perlin2d(float x, float y, float freq, int depth, int seed);
 
 int mapInit();
+
+TILE **getMap();
+
+void displayMap(int x, int y, TILE**map);

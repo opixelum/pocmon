@@ -5,8 +5,6 @@ set(CMAKE_C_STANDARD 23)
 
 file(GLOB SOURCES "src/*.c")
 
-include_directories(include)
-
 include(CTest)
 enable_testing()
 

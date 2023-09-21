@@ -23,17 +23,20 @@ typedef struct Battle {
     Pokemon pokemonB;
 } Battle;
 
+typedef enum TILE
+{
+    PLAYER = 'X',
+    PATH = '.',
+    GRASS = 'W',
+    obstacle = '#'
+}
+TILE;
+
 typedef struct Pokedex {
     Pokemon** pokemons;
     int seenPokemons;
     int unseenPokemons;
 } Pokedex;
-
-typedef struct Map {
-    int columns;
-    int lines;
-    enum tile {player, path, grass, obstacle};
-} Map;
 
 typedef struct Player {
     char* name;
