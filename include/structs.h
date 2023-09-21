@@ -35,8 +35,7 @@ typedef struct Pokemon
     int defense;
     int speed;
     TYPE type;
-}
-Pokemon;
+} Pokemon;
 
 typedef struct Team
 {
@@ -65,8 +64,7 @@ typedef struct Map
     int columns;
     int lines;
     TILE **tile;
-}
-Map;
+} Map;
 
 typedef struct Player
 {
