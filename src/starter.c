@@ -1,6 +1,7 @@
 #include "cli.h"
 #include "structs.h"
 #include "utils.h"
+#include "starter.h"
 #include "map.h"
 
 void history_screen()
