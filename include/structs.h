@@ -4,41 +4,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Pokemon {
+typedef enum TYPE
+{
+    FIRE = 0,
+    WATER = 1,
+    PLANT = 2,
+    ELECTRIC = 3,
+    GROUND = 4,
+    NORMAL = 5,
+    PSY = 6,
+    FLYING = 7, 
+    STEEL = 8
+}
+TYPE;
+
+typedef enum TILE
+{
+    PLAYER = 0,
+    PATH = 1,
+    GRASS = 2,
+    obstacle = 3
+}
+TILE;
+
+typedef struct Pokemon
+{
     char* name;
-    int pv;
+    int hp;
     int attack;
     int defense;
     int speed;
-    int type;
-} Pokemon;
+    TYPE type;
+}
+Pokemon;
 
-typedef struct Team {
+typedef struct Team
+{
     short size;
     Pokemon** pokemons;
-} Team;
+}
+Team;
 
-typedef struct Battle {
-    Pokemon pokemonA;
-    Pokemon pokemonB;
-} Battle;
+typedef struct Battle
+{
+    Pokemon pokemon_a;
+    Pokemon pokemon_b;
+}
+Battle;
 
-typedef struct Pokedex {
+typedef struct Pokedex
+{
     Pokemon** pokemons;
-    int seenPokemons;
-    int unseenPokemons;
-} Pokedex;
+    int seen_pokemons;
+    int unseen_pokemons;
+}
+Pokedex;
 
-typedef struct Map {
+typedef struct Map
+{
     int columns;
     int lines;
-    enum tile {player, path, grass, obstacle};
-} Map;
+    TILE **tile;
+}
+Map;
 
-typedef struct Player {
+typedef struct Player
+{
     char* name;
-    Team playerTeam;
-} Player;
+    Team player_team;
+}
+Player;
 
 Pokemon* create_pokemon(char* name, int pv, int attack, int defense, int speed, int type);
 Team* create_team();
