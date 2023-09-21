@@ -1,3 +1,4 @@
+# CMake generated files
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -9,3 +10,15 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+# CMake build directory
+/build/
+
+# Compiled object files
+*.o
+
+# Compiled executables
+*.exe
+
+# Compiled shared libraries
+*.so
