@@ -2,6 +2,7 @@
 #include "structs.h"
 #include "utils.h"
 #include "map.h"
+#include "starter.h"
 
 void history_screen()
 {
