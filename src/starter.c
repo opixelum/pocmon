@@ -1,6 +1,7 @@
 #include "cli.h"
 #include "structs.h"
 #include "utils.h"
+#include "map.h"
 
 void history_screen()
 {
@@ -95,5 +96,6 @@ void starter_choose(char *name)
     clear_screen();
     printf("Professor Chen: %s, you are ready to go!\n", name);
 
-    // Launch map
+    // Init the map
+    mapInit();
 }

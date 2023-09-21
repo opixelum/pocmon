@@ -56,7 +56,7 @@ float perlin2d(float x, float y, float freq, int depth, int seed)
 int mapInit()
 {
     int x, y;
-    FILE * f= fopen("map/map.map", "w");
+    FILE * f= fopen("../save/map.map", "w");
     if(f == NULL)
     {
         return -1;
