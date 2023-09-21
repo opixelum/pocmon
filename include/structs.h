@@ -1,3 +1,6 @@
+#ifndef STRUCTS_H
+#define STRUCTS_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,3 +47,5 @@ Player* create_player(char* name);
 void free_pokemon(Pokemon* pokemon);
 void free_team(Team* team);
 void free_player(Player* player);
+
+#endif
