@@ -27,40 +27,52 @@ typedef enum TILE
 }
 TILE;
 
-typedef struct Pokemon {
+typedef struct Pokemon
+{
     char* name;
     int hp;
     int attack;
     int defense;
     int speed;
     TYPE type;
-} Pokemon;
+}
+Pokemon;
 
-typedef struct Team {
+typedef struct Team
+{
     short size;
     Pokemon** pokemons;
-} Team;
+}
+Team;
 
-typedef struct Battle {
-    Pokemon pokemonA;
-    Pokemon pokemonB;
-} Battle;
+typedef struct Battle
+{
+    Pokemon pokemon_a;
+    Pokemon pokemon_b;
+}
+Battle;
 
-typedef struct Pokedex {
+typedef struct Pokedex
+{
     Pokemon** pokemons;
-    int seenPokemons;
-    int unseenPokemons;
-} Pokedex;
+    int seen_pokemons;
+    int unseen_pokemons;
+}
+Pokedex;
 
-typedef struct Map {
+typedef struct Map
+{
     int columns;
     int lines;
     TILE **tile;
-} Map;
+}
+Map;
 
-typedef struct Player {
+typedef struct Player
+{
     char* name;
-    Team playerTeam;
-} Player;
+    Team player_team;
+}
+Player;
 
 #endif
