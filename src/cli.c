@@ -12,7 +12,7 @@ void clear_lines(int lines)
 
 void main_menu()
 {
-    printf("C-ensure\n\n    1. Start chatting\n    2. Forbidden dictionary\n    3. Quit\n\n");
+    printf("PoCmon\n\n    1. New Game\n    2. Continue Game\n    3. Quit\n\n");
 }
 
 void wait_for_enter()

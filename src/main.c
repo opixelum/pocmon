@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "cli.h"
 
 int main(int argc, char **argv)
 {
-    printf("Hello, world!\n");
+    main_menu();
     return EXIT_SUCCESS;
 }

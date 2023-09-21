@@ -26,10 +26,9 @@ void clear_lines(int);
  * @brief Prints main menu.
  *
  * 4 options:
- * 1. Start chatting;
- * 2. Forbidden dictionary;
- * 3. Tutorial;
- * 4. Quit.
+ * 1. New Game;
+ * 2. Continue Game;
+ * 3. Quit.
  */
 void main_menu();
 
