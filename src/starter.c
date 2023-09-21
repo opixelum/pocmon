@@ -1,7 +1,12 @@
 #include "cli.h"
+#include "structs.h"
+#include "utils.h"
 
 void history_screen()
 {
+    Player *newPlayer = malloc(sizeof(Player)); // Allocate memory for the player
+
+    // History
     clear_screen();
     printf("Professor Chen: Hello there! Welcome to the world of Pokemon!\n");
     wait_for_enter();
@@ -24,6 +29,7 @@ void history_screen()
     scanf("%s", name);
     clear_stdin();
     clear_screen();
+    newPlayer->name = name;
     printf("Right! So your name is %s!\n", name);
     wait_for_enter();
     clear_screen();
@@ -88,4 +94,6 @@ void starter_choose(char *name)
     wait_for_enter();
     clear_screen();
     printf("Professor Chen: %s, you are ready to go!\n", name);
+
+    // Launch map
 }
