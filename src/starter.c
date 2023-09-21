@@ -22,6 +22,8 @@ void history_screen()
     printf("Enter your name: ");
     char name[20];
     scanf("%s", name);
+    clear_stdin();
+    clear_screen();
     printf("Right! So your name is %s!\n", name);
     wait_for_enter();
     clear_screen();
@@ -48,28 +50,25 @@ void starter_choose(char *name)
         printf("    4. Pikachu\n");
         printf("\nEnter your choice: ");
         scanf("%d", &choice);
+        clear_stdin();
         switch (choice)
         {
         case 1:
-            wait_for_enter();
             clear_screen();
             printf("You chose Bulbizzare!\n");
             pokemoName = "Bulbizzare";
             break;
         case 2:
-            wait_for_enter();
             clear_screen();
             printf("You chose Salamèche!\n");
             pokemoName = "Salamèche";
             break;
         case 3:
-            wait_for_enter();
             clear_screen();
             printf("You chose Carapuce!\n");
             pokemoName = "Carapuce";
             break;
         case 4:
-            wait_for_enter();
             clear_screen();
             printf("You chose Pikachu!\n");
             pokemoName = "Pikachu";

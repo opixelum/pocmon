@@ -22,6 +22,7 @@ void main_menu()
         printf("Enter your choice: ");
 
         scanf("%d", &choice);
+        clear_stdin();
         switch (choice)
         {
         case 1:
