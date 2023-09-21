@@ -3,14 +3,14 @@
 
 
 // create all functions
-Pokemon* create_pokemon(char* name, int pv, int attack, int defense, int speed, int type)
+Pokemon* create_pokemon(char* name, int hp, int attack, int defense, int speed, int type)
 {
     Pokemon* pokemon = malloc(sizeof(Pokemon));
 
     pokemon->name = malloc(strlen(name) + 1);
     strcpy(pokemon->name, name);
 
-    pokemon->pv = pv;
+    pokemon->hp = hp;
     pokemon->attack = attack;
     pokemon->defense = defense;
     pokemon->speed = speed;
