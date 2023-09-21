@@ -75,4 +75,12 @@ typedef struct Player
 }
 Player;
 
+Pokemon* create_pokemon(char* name, int pv, int attack, int defense, int speed, int type);
+Team* create_team();
+Player* create_player(char* name);
+
+void free_pokemon(Pokemon* pokemon);
+void free_team(Team* team);
+void free_player(Player* player);
+
 #endif

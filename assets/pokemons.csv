@@ -1,0 +1,12 @@
+nom_du_pokemon;pv;attaque;défense;vitesse;type
+Bulbizarre;90;49;24;45;Plante
+Salamèche;78;52;21;65;Feu
+Carapuce;88;48;32;43;Eau
+Pikachu;70;55;20;90;Électrik
+Sabelette;80;50;25;90;Sol
+Miaouss;80;45;35;90;Normal
+Caninos;90;51;20;60;Feu
+Ptitard;80;50;20;90;Eau
+Abra;75;50;15;90;Psy
+Canarticho;104;40;25;60;Vol
+Magnéti;70;35;35;45;Acier
