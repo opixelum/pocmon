@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "starter.h"
 #include "map.h"
+#include "pokemon.h"
 
 void history_screen()
 {
@@ -48,6 +49,7 @@ void starter_choose(char *name)
 {
     int choice;
     char *pokemoName;
+    Pokemon *pokemon = malloc(sizeof(Pokemon));
     do
     {
         clear_screen();
@@ -65,27 +67,34 @@ void starter_choose(char *name)
             clear_screen();
             printf("You chose Bulbizzare!\n");
             pokemoName = "Bulbizzare";
+            pokemon = create_pokemon(pokemoName, 45, 49, 49, 45, GRASS);
             break;
         case 2:
             clear_screen();
             printf("You chose Salamèche!\n");
             pokemoName = "Salamèche";
+            pokemon = create_pokemon(pokemoName, 39, 52, 43, 65, FIRE);
             break;
         case 3:
             clear_screen();
             printf("You chose Carapuce!\n");
             pokemoName = "Carapuce";
+            pokemon = create_pokemon(pokemoName, 44, 48, 65, 43, WATER);
             break;
         case 4:
             clear_screen();
             printf("You chose Pikachu!\n");
             pokemoName = "Pikachu";
+            pokemon = create_pokemon(pokemoName, 35, 55, 40, 90, ELECTRIC);
             break;
         default:
             choice = 0;
             break;
         }
     } while (choice < 1 || choice > 4);
+
+    Team* team = create_team();
+    add_pokemon_to_team(team, pokemon);
 
     wait_for_enter();
     clear_screen();
