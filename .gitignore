@@ -22,3 +22,6 @@ _deps
 
 # Compiled shared libraries
 *.so
+
+# VS Code files
+.vscode/
