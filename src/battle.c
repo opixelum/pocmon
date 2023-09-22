@@ -149,6 +149,7 @@ void start_battle(Battle *newBattle, Team *team)
                 switch (choice[0])
                 {
                 case '1':
+                    unsigned char in_pokeball_menu = 1;
                     do
                     {
                         do
@@ -199,16 +200,19 @@ void start_battle(Battle *newBattle, Team *team)
                             break;
 
                         case '2':
+                            in_pokeball_menu = 0;
+                            choice[0] = '0';
                             break;
 
                         default:
                             choice = NULL;
                             break;
                         }
-                    } while (choice[0] < '1' || choice[0] > '2');
+                    } while (in_pokeball_menu);
                     break;
 
                 case '2':
+                    unsigned char in_potion_menu = 1;
                     do
                     {
                         do
@@ -232,13 +236,15 @@ void start_battle(Battle *newBattle, Team *team)
                             break;
 
                         case '2':
+                            in_potion_menu = 0;
+                            choice[0] = '0';
                             break;
 
                         default:
                             choice = NULL;
                             break;
                         }
-                    } while (choice[0] < '1' || choice[0] > '2');
+                    } while (in_potion_menu);
 
                 case '3':
                     break;
@@ -292,6 +298,7 @@ void start_battle(Battle *newBattle, Team *team)
                     break;
                 case '2':
                     break;
+
                 default:
                     choice = NULL;
                     break;
