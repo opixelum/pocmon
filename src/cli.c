@@ -13,7 +13,7 @@ void clear_lines(int lines)
         printf("\x1b[1F\x1b[2K");
 }
 
-void main_menu(Context* context)
+void main_menu(Context* context, Team *team)
 {
     int choice;
     do
@@ -27,11 +27,11 @@ void main_menu(Context* context)
         switch (choice)
         {
         case 1:
-            history_screen(context);
+            history_screen(context, team);
             break;
         case 2:
             if(getMap(context)!=0){
-                history_screen(context);
+                history_screen(context, team);
             }
             break;
         case 3:

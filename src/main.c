@@ -3,6 +3,7 @@
 #include "structs.h"
 #include "pokemon.h"
 #include "save.h"
+#include "starter.h"
 
 int main(int argc, char **argv)
 {
@@ -12,7 +13,7 @@ int main(int argc, char **argv)
 
     restore_game(context->map, team, pokedex);
 
-    main_menu(context);
+    main_menu(context, team);
     
     if(event_loop(context, team, pokedex) == 0) {
         return EXIT_SUCCESS;

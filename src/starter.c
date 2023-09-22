@@ -6,7 +6,7 @@
 #include "pokemon.h"
 #include "battle.h"
 
-void history_screen(Context *context)
+void history_screen(Context *context, Team *team)
 {
     Player *newPlayer = malloc(sizeof(Player)); // Allocate memory for the player
 
@@ -44,10 +44,10 @@ void history_screen(Context *context)
     printf("A world of dreams and adventures with Pokemon awaits! Let's go!\n");
     wait_for_enter();
     clear_screen();
-    starter_choose(name, context);
+    starter_choose(name, context, team);
 }
 
-void starter_choose(char *name, Context *context)
+void starter_choose(char *name, Context *context, Team *team)
 {
     int choice;
     char *pokemoName;
@@ -95,8 +95,10 @@ void starter_choose(char *name, Context *context)
         }
     } while (choice < 1 || choice > 4);
 
-    Team *team = create_team();
+    Team *newTeam = create_team();
     add_pokemon_to_team(team, pokemon);
+
+    team = newTeam;
 
     wait_for_enter();
     clear_screen();

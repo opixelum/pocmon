@@ -31,7 +31,7 @@ void clear_lines(int);
  * 2. Continue Game;
  * 3. Quit.
  */
-void main_menu(Context* context);
+void main_menu(Context* context, Team *team);
 
 /**
  * @brief Waits for user to press [ENTER] key.

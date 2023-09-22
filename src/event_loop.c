@@ -3,9 +3,12 @@
 #include "structs.h"
 #include "map.h"
 #include "save.h"
+#include "battle.h"
+#include "pokemon.h"
 
 int process_user_input(char userInput, Context* context, Team *team, Pokedex *pokedex);
 int trigger_fight();
+Battle *random_battle(Pokedex *pokedex);
 
 int event_loop(Context * context, Team *team, Pokedex *pokedex)
 {
@@ -31,8 +34,9 @@ int process_user_input(char userInput, Context* context, Team *team, Pokedex *po
                 break;
             }else if(context->map[context->pos_x][context->pos_y-1]==GRASS){
                 if(trigger_fight()) {
-                    // TODO: trigger fight
-                    printf("HEHEHE");
+                    system ("/bin/stty cooked");
+                    start_battle(random_battle(pokedex), team);
+                    system ("/bin/stty raw");
                 }
                 context->pos_y-=1;
                 break;
@@ -45,8 +49,9 @@ int process_user_input(char userInput, Context* context, Team *team, Pokedex *po
                 break;
             }else if(context->map[context->pos_x+1][context->pos_y]==GRASS){
                 if(trigger_fight()) {
-                    // TODO: trigger fight
-                    printf("HEHEHE");
+                    system ("/bin/stty cooked");
+                    start_battle(random_battle(pokedex), team);
+                    system ("/bin/stty raw");
                 }
                 context->pos_x+=1;
                 break;
@@ -59,8 +64,9 @@ int process_user_input(char userInput, Context* context, Team *team, Pokedex *po
                 break;
             }else if(context->map[context->pos_x][context->pos_y+1]==GRASS){
                 if(trigger_fight()) {
-                    // TODO: trigger fight
-                    printf("HEHEHE");
+                    system ("/bin/stty cooked");
+                    start_battle(random_battle(pokedex), team);
+                    system ("/bin/stty raw");
                 }
                 context->pos_y+=1;
                 break;
@@ -73,8 +79,9 @@ int process_user_input(char userInput, Context* context, Team *team, Pokedex *po
                 break;
             }else if(context->map[context->pos_x-1][context->pos_y]==GRASS){
                 if(trigger_fight()) {
-                    // TODO: trigger fight
-                    printf("HEHEHE");
+                    system ("/bin/stty cooked");
+                    start_battle(random_battle(pokedex), team);
+                    system ("/bin/stty raw");
                 }
                 context->pos_x-=1;
                 break;
@@ -83,7 +90,12 @@ int process_user_input(char userInput, Context* context, Team *team, Pokedex *po
                 break;
             }
         case 'e':
-            // TODO: show pokemons
+            system ("/bin/stty cooked");
+            clear_screen();
+            print_team(team);
+            wait_for_enter();
+            system ("/bin/stty raw");
+
             break;
         case 'S':
             save_game(context->map, team, pokedex);
