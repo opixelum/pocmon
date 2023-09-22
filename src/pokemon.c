@@ -73,7 +73,7 @@ Pokemon **get_pokemons_from_csv()
         fprintf(stderr, "ERROR: get_pokemons_from_csv: all_pokemons: malloc failed.\n");
     }
 
-    for (int i = 1; i < pokemon_csv->nbRows - 1; i++)
+    for (int i = 1; i < pokemon_csv->nbRows; i++)
     {
         Pokemon *pokemon = malloc(sizeof *pokemon);
         if (!pokemon)
