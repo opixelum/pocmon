@@ -25,3 +25,6 @@ _deps
 
 # VS Code files
 .vscode/
+
+# Save of game
+save/
