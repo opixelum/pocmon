@@ -6,17 +6,16 @@
 
 typedef enum TYPE
 {
-    FIRE = 0,
-    WATER = 1,
-    PLANT = 2,
-    ELECTRIC = 3,
-    GROUND = 4,
-    NORMAL = 5,
-    PSY = 6,
-    FLYING = 7, 
+    NORMAL = 0,
+    FIRE = 1,
+    WATER = 2,
+    PLANT = 3,
+    ELECTRIC = 4,
+    GROUND = 5,
+    FLYING = 6,
+    PSY = 7,
     STEEL = 8
-}
-TYPE;
+} TYPE;
 
 typedef enum TILE
 {
@@ -24,64 +23,57 @@ typedef enum TILE
     PATH = '.',
     GRASS = 'W',
     OBSTACLE = '#'
-}
-TILE;
+} TILE;
 
 typedef struct Pokemon
 {
-    char* name;
+    char *name;
+    int initial_hp;
     int hp;
     int attack;
     int defense;
     int speed;
     TYPE type;
-}
-Pokemon;
+} Pokemon;
 
 typedef struct Team
 {
     short size;
-    Pokemon** pokemons;
-}
-Team;
+    Pokemon **pokemons;
+} Team;
 
 typedef struct Battle
 {
-    Pokemon pokemon_a;
-    Pokemon pokemon_b;
-}
-Battle;
+    Pokemon *pokemon_b;
+} Battle;
 
 typedef struct Pokedex
 {
     int nb_pokemons;
-    Pokemon** pokemons;
+    Pokemon **pokemons;
     int *seen_pokemons;
     size_t nb_seen_pokemons;
-}
-Pokedex;
+} Pokedex;
 
 typedef struct Context
 {
     int pos_x;
     int pos_y;
-    TILE** map;
-}Context;
-
+    TILE **map;
+} Context;
 
 typedef struct Player
 {
-    char* name;
+    char *name;
     Team player_team;
-}
-Player;
+} Player;
 
-Pokemon* create_pokemon(char* name, int hp, int attack, int defense, int speed, int type);
-Team* create_team();
-Player* create_player(char* name);
+Pokemon *create_pokemon(char *name, int hp, int attack, int defense, int speed, int type);
+Team *create_team();
+Player *create_player(char *name);
 
-void free_pokemon(Pokemon* pokemon);
-void free_team(Team* team);
-void free_player(Player* player);
+void free_pokemon(Pokemon *pokemon);
+void free_team(Team *team);
+void free_player(Player *player);
 
 #endif

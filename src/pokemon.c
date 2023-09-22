@@ -21,6 +21,15 @@ void print_team(Team* team)
     }
 }
 
+Team* add_pokemon_to_team(Team *team, Pokemon *pokemon)
+{
+    team->size++;
+    team->pokemons = realloc(team->pokemons, sizeof(Pokemon*) * team->size);
+    team->pokemons[team->size - 1] = pokemon;
+
+    return team;
+}
+
 void print_pokedex(Pokedex* pokedex)
 {
     for (unsigned char i = 0; i < pokedex->nb_pokemons; i++)

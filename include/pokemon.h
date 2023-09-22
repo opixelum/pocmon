@@ -8,17 +8,17 @@
 /**
  * @brief Prints a pokemon's stats
  */
-void print_pokemon(Pokemon* pokemon);
+void print_pokemon(Pokemon *pokemon);
 
 /**
  * @brief Prints a team's pokemons
  */
-void print_team(Team* team);
+void print_team(Team *team);
 
 /**
  * @brief Prints all pokemons in a pokedex
  */
-void print_pokedex(Pokedex* pokedex);
+void print_pokedex(Pokedex *pokedex);
 
 /**
  * @brief Add a pokemon to a pokedex
@@ -38,5 +38,13 @@ Pokedex *get_pokedex_from_csv();
 unsigned char pokemon_type_string_to_num(char *string);
 
 Pokemon *get_pokemon_by_name(Pokedex *pokedex, char *pokemon_name);
+
+/** @brief Add a pokemon to the team
+ *
+ * @param team
+ * @param pokemon
+ * @return Team*
+ */
+Team *add_pokemon_to_team(Team *team, Pokemon *pokemon);
 
 #endif

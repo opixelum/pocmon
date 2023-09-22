@@ -1,16 +1,18 @@
 #include "cli.h"
 #include "structs.h"
 #include "utils.h"
-#include "map.h"
 #include "starter.h"
+#include "map.h"
+#include "pokemon.h"
+#include "battle.h"
 
-void history_screen(Context* context)
+void history_screen(Context *context)
 {
     Player *newPlayer = malloc(sizeof(Player)); // Allocate memory for the player
 
     // History
     clear_screen();
-    printf("%ld",sizeof(TILE));
+    printf("%ld", sizeof(TILE));
     printf("Professor Chen: Hello there! Welcome to the world of Pokemon!\n");
     wait_for_enter();
     clear_screen();
@@ -45,10 +47,11 @@ void history_screen(Context* context)
     starter_choose(name, context);
 }
 
-void starter_choose(char *name,Context* context)
+void starter_choose(char *name, Context *context)
 {
     int choice;
     char *pokemoName;
+    Pokemon *pokemon = malloc(sizeof(Pokemon));
     do
     {
         clear_screen();
@@ -66,27 +69,34 @@ void starter_choose(char *name,Context* context)
             clear_screen();
             printf("You chose Bulbizzare!\n");
             pokemoName = "Bulbizzare";
+            pokemon = create_pokemon(pokemoName, 90, 49, 24, 45, PLANT);
             break;
         case 2:
             clear_screen();
             printf("You chose Salamèche!\n");
             pokemoName = "Salamèche";
+            pokemon = create_pokemon(pokemoName, 78, 52, 21, 65, FIRE);
             break;
         case 3:
             clear_screen();
             printf("You chose Carapuce!\n");
             pokemoName = "Carapuce";
+            pokemon = create_pokemon(pokemoName, 88, 48, 32, 43, WATER);
             break;
         case 4:
             clear_screen();
             printf("You chose Pikachu!\n");
             pokemoName = "Pikachu";
+            pokemon = create_pokemon(pokemoName, 70, 55, 20, 90, ELECTRIC);
             break;
         default:
             choice = 0;
             break;
         }
     } while (choice < 1 || choice > 4);
+
+    Team *team = create_team();
+    add_pokemon_to_team(team, pokemon);
 
     wait_for_enter();
     clear_screen();
