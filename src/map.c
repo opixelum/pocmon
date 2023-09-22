@@ -96,9 +96,15 @@ int mapInit()
 TILE **getMap()
 {
     TILE** map = malloc(sizeof(TILE*)*ROWS);
+    if(map == NULL)
+    {
+        printf("ALED\n");
+        return NULL;
+    }
     FILE * f= fopen("../save/map.map", "r");
     if(f == NULL)
     {
+        perror("ALED FICHIER\n");
         return NULL;
     }
     for (int i = 0;i < ROWS; i++)
@@ -132,7 +138,7 @@ void displayMap(int x, int y, TILE**map)
             }
             else
             {
-                printf("%d",map[i][j]);
+                printf("%c",map[i][j]);
             }
         }
         printf("\n");

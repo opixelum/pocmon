@@ -100,5 +100,6 @@ void starter_choose(char *name)
     // Init the map
     mapInit();
     TILE** map = getMap();
+    printf("%p\n",map);
     displayMap(10,10,map);
 }
