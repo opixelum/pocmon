@@ -4,7 +4,7 @@
 #include "map.h"
 #include "starter.h"
 
-void history_screen()
+void history_screen(Context* context)
 {
     Player *newPlayer = malloc(sizeof(Player)); // Allocate memory for the player
 
@@ -42,10 +42,10 @@ void history_screen()
     printf("A world of dreams and adventures with Pokemon awaits! Let's go!\n");
     wait_for_enter();
     clear_screen();
-    starter_choose(name);
+    starter_choose(name, context);
 }
 
-void starter_choose(char *name)
+void starter_choose(char *name,Context* context)
 {
     int choice;
     char *pokemoName;
@@ -100,7 +100,5 @@ void starter_choose(char *name)
 
     // Init the map
     mapInit();
-    TILE** map = getMap();
-    printf("%p\n",map);
-    displayMap(10,10,map);
+    getMap(context);
 }

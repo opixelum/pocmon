@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "utils.h"
+#include "structs.h"
 
 /**
  * @brief Cross-platform function to clear console screen.
@@ -30,7 +31,7 @@ void clear_lines(int);
  * 2. Continue Game;
  * 3. Quit.
  */
-void main_menu();
+void main_menu(Context* context);
 
 /**
  * @brief Waits for user to press [ENTER] key.

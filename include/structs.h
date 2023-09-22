@@ -23,7 +23,7 @@ typedef enum TILE
     PLAYER = 'X',
     PATH = '.',
     GRASS = 'W',
-    obstacle = '#'
+    OBSTACLE = '#'
 }
 TILE;
 
@@ -60,6 +60,14 @@ typedef struct Pokedex
     size_t nb_seen_pokemons;
 }
 Pokedex;
+
+typedef struct Context
+{
+    int pos_x;
+    int pos_y;
+    TILE** map;
+}Context;
+
 
 typedef struct Player
 {

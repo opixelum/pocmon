@@ -1,1 +1,3 @@
-int event_loop();
+#include "structs.h"
+
+int event_loop(Context * context);

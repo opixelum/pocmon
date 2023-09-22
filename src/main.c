@@ -1,11 +1,12 @@
 #include "cli.h"
 #include "event_loop.h"
-#include "save.h"
+#include "structs.h"
 
 int main(int argc, char **argv)
 {
-    test_save();
-    if(event_loop() == 0) {
+    Context* context=malloc(sizeof(Context));
+    main_menu(context);
+    if(event_loop(context) == 0) {
         return EXIT_SUCCESS;
     }
     

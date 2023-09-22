@@ -31,6 +31,6 @@ float perlin2d(float x, float y, float freq, int depth, int seed);
 
 int mapInit();
 
-TILE **getMap();
+int getMap(Context* context);
 
-void displayMap(int x, int y, TILE**map);
+void displayMap(Context* context);

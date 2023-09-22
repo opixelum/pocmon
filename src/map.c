@@ -56,6 +56,8 @@ float perlin2d(float x, float y, float freq, int depth, int seed)
 int mapInit()
 {
     int x, y;
+    int posx =-1;
+    int posy =-1;
     FILE * f= fopen("../save/map.map", "w");
     if(f == NULL)
     {
@@ -70,7 +72,7 @@ int mapInit()
         {
             tmp= perlin2d(x, y, 0.05, 8, seed);
             if(x==0 || y==0 || x==COLUMNS-1 || y==ROWS-1){
-                fputc(obstacle, f);
+                fputc(OBSTACLE, f);
             }else{
                 if(tmp > 0.4 && tmp < 0.65)
                 {
@@ -78,67 +80,78 @@ int mapInit()
                 }
                 else if(tmp <= 0.4)
                 {
+                    if(posx==-1&&posy==-1){
+                        posx=x;
+                        posy=y;
+                    }
                     fputc(PATH, f);
                 }
                 else
                 {
-                    fputc(obstacle, f);
+                    fputc(OBSTACLE, f);
                 }
             }
             
         }
         fputc('\n', f);
+        
     }
+    fprintf(f,"%d %d",posx,posy);
     fclose(f);
     return 0;
 }
 
-TILE **getMap()
+int getMap(Context* context)
 {
-    TILE** map = malloc(sizeof(TILE*)*ROWS);
-    if(map == NULL)
+    context->map = malloc(sizeof(TILE*)*ROWS);
+    if(context->map == NULL)
     {
         printf("ALED\n");
-        return NULL;
+        return 1;
     }
     FILE * f= fopen("../save/map.map", "r");
     if(f == NULL)
     {
         perror("ALED FICHIER\n");
-        return NULL;
+        return 1;
     }
     for (int i = 0;i < ROWS; i++)
     {
-        map[i] = malloc(sizeof(TILE)*COLUMNS);
+        context->map[i] = malloc(sizeof(TILE)*COLUMNS);
         for (int j = 0;j < COLUMNS; j++)
         {
-            map[i][j] = fgetc(f);
+            context->map[i][j] = fgetc(f);
         }
         fgetc(f);
     }
+    int x;
+    int y;
+    fscanf(f,"%d %d",&x,&y);
+    context->pos_x = x;
+    context->pos_y = y;
     fclose(f);
-    return map;
-
+    return 0;
 }
 
-void displayMap(int x, int y, TILE**map)
+void displayMap(Context* context)
 {
     clear_screen();
-    for(int i = y-12;i<y+12;i++)
+
+    for(int i = context->pos_y-12;i<context->pos_y+12;i++)
     {
-        for(int j = x-24;j<x+24;j++)
+        for(int j = context->pos_x-24;j<context->pos_x+24;j++)
         {
-            if(i<0 || j<0 || i>=ROWS || j>=COLUMNS)
+            if(i<0 || j<0 || j>=ROWS || i>=COLUMNS)
             {
                 printf(" ");
             }
-            else if(j==x && i==y)
+            else if(j==context->pos_x && i==context->pos_y)
             {
                 printf("%c",PLAYER);
             }
             else
             {
-                printf("%c",map[i][j]);
+                printf("%c",context->map[j][i]);
             }
         }
         printf("\n");
