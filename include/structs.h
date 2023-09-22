@@ -6,14 +6,14 @@
 
 typedef enum TYPE
 {
-    FIRE = 0,
-    WATER = 1,
-    PLANT = 2,
-    ELECTRIC = 3,
-    GROUND = 4,
-    NORMAL = 5,
-    PSY = 6,
-    FLYING = 7, 
+    NORMAL = 0,
+    FIRE = 1,
+    WATER = 2,
+    PLANT = 3,
+    ELECTRIC = 4,
+    GROUND = 5,
+    FLYING = 6,
+    PSY = 7,
     STEEL = 8
 }
 TYPE;
@@ -30,6 +30,7 @@ TILE;
 typedef struct Pokemon
 {
     char* name;
+    int initial_hp;
     int hp;
     int attack;
     int defense;
@@ -46,8 +47,7 @@ Team;
 
 typedef struct Battle
 {
-    Pokemon pokemon_a;
-    Pokemon pokemon_b;
+    Pokemon* pokemon_b;
 }
 Battle;
 
