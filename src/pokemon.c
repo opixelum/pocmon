@@ -23,7 +23,7 @@ void print_team(Team* team)
 
 void print_pokedex(Pokedex* pokedex)
 {
-    for (unsigned char i = 0; i < pokedex->seen_pokemons; i++)
+    for (unsigned char i = 0; i < pokedex->nb_pokemons; i++)
     {
         printf("Pokemon #%d\n", i + 1);
         print_pokemon(pokedex->pokemons[i]);
@@ -33,13 +33,11 @@ void print_pokedex(Pokedex* pokedex)
 
 unsigned char add_pokemon_to_pokedex(Pokemon *pokemon, Pokedex *pokedex)
 {
-    pokedex->pokemons = realloc(pokedex->pokemons, pokedex->seen_pokemons * sizeof pokedex->pokemons);
+    pokedex->nb_pokemons++;
+    pokedex->pokemons = realloc(pokedex->pokemons, (pokedex->nb_pokemons) * sizeof pokedex->pokemons);
     if (!pokedex->pokemons) return EXIT_FAILURE;
 
-    pokedex->pokemons[pokedex->seen_pokemons - 1] = pokemon;
-
-    pokedex->seen_pokemons++;
-    pokedex->unseen_pokemons--;
+    pokedex->pokemons[pokedex->nb_pokemons - 1] = pokemon;
 
     return EXIT_SUCCESS;
 } 
@@ -59,9 +57,11 @@ unsigned char pokemon_type_string_to_num(char *string)
     return -1;
 }
 
-Pokemon **get_pokemons_from_csv()
+Pokedex *get_pokedex_from_csv()
 {
-    Csv *pokemon_csv = read_csv("./assets/pokemons.csv");
+    Pokedex *pokedex = malloc(sizeof(Pokedex));
+
+    Csv *pokemon_csv = read_csv("../assets/pokemons.csv");
     if (!pokemon_csv)
     {
         fprintf(stderr, "ERROR: get_pokemons_from_csv: pokemon_csv: read_csv failed.\n");
@@ -74,8 +74,10 @@ Pokemon **get_pokemons_from_csv()
         fprintf(stderr, "ERROR: get_pokemons_from_csv: all_pokemons: malloc failed.\n");
     }
 
-    for (int i = 1; i < pokemon_csv->nbRows; i++)
+    int i;
+    for (i = 1; i < pokemon_csv->nbRows; i++)
     {
+
         Pokemon *pokemon = malloc(sizeof *pokemon);
         if (!pokemon)
         {
@@ -105,7 +107,15 @@ Pokemon **get_pokemons_from_csv()
         all_pokemons[i - 1] = pokemon;
     }
 
-    return all_pokemons;
+    i--;
+
+    pokedex->pokemons = malloc(sizeof(Pokemon) * i);
+    pokedex->pokemons = all_pokemons;
+    pokedex->nb_pokemons = i;
+
+    return pokedex;
+}
+
 Pokemon *get_pokemon_by_name(Pokedex *pokedex, char *pokemon_name)
 {
     for(int i = 0; i < pokedex->nb_pokemons; i++) {

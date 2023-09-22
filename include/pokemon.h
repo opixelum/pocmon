@@ -28,12 +28,7 @@ void print_pokedex(Pokedex* pokedex);
  */
 unsigned char add_pokemon_to_pokedex(Pokemon *pokemon, Pokedex *pokedex);
 
-/**
- * @brief Get all pokemons listed in csv file
- * @return An array of pokemons
- * @warning Free the returned array after use
- */
-Pokemon **get_pokemons_from_csv();
+Pokedex *get_pokedex_from_csv();
 
 /**
  * @brief Convert pokemon type from string to number (unsigned char)
@@ -41,6 +36,7 @@ Pokemon **get_pokemons_from_csv();
  * @return The corresponding type in integer
  */
 unsigned char pokemon_type_string_to_num(char *string);
+
 Pokemon *get_pokemon_by_name(Pokedex *pokedex, char *pokemon_name);
 
 #endif
