@@ -35,6 +35,8 @@ Player *create_player(char *name)
 
     player->name = malloc(strlen(name) + 1);
     strcpy(player->name, name);
+
+    return player;
 }
 
 // all free functions

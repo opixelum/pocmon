@@ -157,7 +157,7 @@ void start_battle(Battle *newBattle, Team *team)
 
                 switch (choice[0])
                 {
-                case '1':
+                case '1': {
                     unsigned char in_pokeball_menu = 1;
                     do
                     {
@@ -219,8 +219,8 @@ void start_battle(Battle *newBattle, Team *team)
                         }
                     } while (in_pokeball_menu);
                     break;
-
-                case '2':
+                }
+                case '2': {
                     unsigned char in_potion_menu = 1;
                     do
                     {
@@ -254,7 +254,7 @@ void start_battle(Battle *newBattle, Team *team)
                             break;
                         }
                     } while (in_potion_menu);
-
+                }
                 case '3':
                     break;
                 default:
