@@ -1,3 +1,4 @@
+#include <string.h>
 #include "pokemon.h"
 
 void print_pokemon(Pokemon* pokemon)
@@ -28,4 +29,15 @@ void print_pokedex(Pokedex* pokedex)
         print_pokemon(pokedex->pokemons[i]);
         printf("\n");
     }
+}
+
+Pokemon *get_pokemon_by_name(Pokedex *pokedex, char *pokemon_name)
+{
+    for(int i = 0; i < pokedex->nb_pokemons; i++) {
+        if(strncmp((pokedex->pokemons)[i]->name, pokemon_name, strlen(pokemon_name) - 1) == 0) {
+            return (pokedex->pokemons)[i];
+        }
+    }
+
+    return NULL;
 }

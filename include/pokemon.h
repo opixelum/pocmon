@@ -18,4 +18,6 @@ void print_team(Team* team);
  */
 void print_pokedex(Pokedex* pokedex);
 
+Pokemon *get_pokemon_by_name(Pokedex *pokedex, char *pokemon_name);
+
 #endif
