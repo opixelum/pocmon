@@ -1,5 +1,6 @@
 #include "cli.h"
 #include "starter.h"
+#include "map.h"
 
 void clear_screen()
 {

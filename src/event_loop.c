@@ -2,16 +2,18 @@
 #include "cli.h"
 #include "structs.h"
 #include "map.h"
+#include "save.h"
 
-int process_user_input(char userInput,Context* context);
+int process_user_input(char userInput, Context* context, Team *team, Pokedex *pokedex);
+int trigger_fight();
 
-int event_loop(Context * context) 
+int event_loop(Context * context, Team *team, Pokedex *pokedex)
 {
     system ("/bin/stty raw");
     while(1) 
     {
         char input = fgetc(stdin);
-        if(process_user_input(input,context) == 0) {
+        if(process_user_input(input,context, team, pokedex) == 0) {
             system ("/bin/stty cooked");
             return 0;
         }
@@ -21,13 +23,17 @@ int event_loop(Context * context)
     }
 }
 
-int process_user_input(char userInput, Context* context) {
+int process_user_input(char userInput, Context* context, Team *team, Pokedex *pokedex) 
+{
     switch(userInput) {
         case 'z':
             if(context->pos_y-1<0 || context->map[context->pos_x][context->pos_y-1]==OBSTACLE){
                 break;
             }else if(context->map[context->pos_x][context->pos_y-1]==GRASS){
-                // ADD SPAWN POKEMON
+                if(trigger_fight()) {
+                    // TODO: trigger fight
+                    printf("HEHEHE");
+                }
                 context->pos_y-=1;
                 break;
             }else{
@@ -38,7 +44,10 @@ int process_user_input(char userInput, Context* context) {
             if(context->pos_x+1>ROWS || context->map[context->pos_x+1][context->pos_y]==OBSTACLE){
                 break;
             }else if(context->map[context->pos_x+1][context->pos_y]==GRASS){
-                // ADD SPAWN POKEMON
+                if(trigger_fight()) {
+                    // TODO: trigger fight
+                    printf("HEHEHE");
+                }
                 context->pos_x+=1;
                 break;
             }else{
@@ -49,7 +58,10 @@ int process_user_input(char userInput, Context* context) {
             if(context->pos_y+1>COLUMNS || context->map[context->pos_x][context->pos_y+1]==OBSTACLE){
                 break;
             }else if(context->map[context->pos_x][context->pos_y+1]==GRASS){
-                // ADD SPAWN POKEMON
+                if(trigger_fight()) {
+                    // TODO: trigger fight
+                    printf("HEHEHE");
+                }
                 context->pos_y+=1;
                 break;
             }else{
@@ -60,7 +72,10 @@ int process_user_input(char userInput, Context* context) {
             if(context->pos_x-1<0 || context->map[context->pos_x-1][context->pos_y]==OBSTACLE){
                 break;
             }else if(context->map[context->pos_x-1][context->pos_y]==GRASS){
-                // ADD SPAWN POKEMON
+                if(trigger_fight()) {
+                    // TODO: trigger fight
+                    printf("HEHEHE");
+                }
                 context->pos_x-=1;
                 break;
             }else{
@@ -71,11 +86,33 @@ int process_user_input(char userInput, Context* context) {
             // TODO: show pokemons
             break;
         case 'S':
-            // TODO: save game
+            save_game(context->map, team, pokedex);
             break;
         case 'Q':
             // exits program
             return 0;
     }
+
+    return 1;
+
 }
 
+int trigger_fight() 
+{
+    srand(time(NULL));
+    int random = rand() % 10;
+
+    return random == 0;
+}
+
+Battle *random_battle(Pokedex *pokedex) 
+{
+    Battle *battle = malloc(sizeof(Battle));
+
+    srand(time(NULL));
+    int random = rand() % pokedex->nb_pokemons - 1;
+
+    battle->pokemon_b = pokedex->pokemons[random];
+
+    return battle;
+}

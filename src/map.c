@@ -147,10 +147,17 @@ void displayMap(Context* context)
             }
             else if(j==context->pos_x && i==context->pos_y)
             {
-                printf("%c",PLAYER);
+                printf("\033[1;31m%c\033[0m",PLAYER);
             }
             else
             {
+                if(context->map[j][i] == OBSTACLE) {
+                    printf("\033[1;37m%c",context->map[j][i]);
+                } else if(context->map[j][i] == GRASS) {
+                    printf("\033[1;32m%c",context->map[j][i]);
+                } else {
+                    printf("\033[1;33m%c",context->map[j][i]);
+                }
                 printf("%c",context->map[j][i]);
             }
         }
