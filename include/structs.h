@@ -54,9 +54,10 @@ Battle;
 
 typedef struct Pokedex
 {
+    int nb_pokemons;
     Pokemon** pokemons;
-    int seen_pokemons;
-    int unseen_pokemons;
+    int *seen_pokemons;
+    size_t nb_seen_pokemons;
 }
 Pokedex;
 

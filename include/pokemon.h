@@ -41,5 +41,6 @@ Pokemon **get_pokemons_from_csv();
  * @return The corresponding type in integer
  */
 unsigned char pokemon_type_string_to_num(char *string);
+Pokemon *get_pokemon_by_name(Pokedex *pokedex, char *pokemon_name);
 
 #endif
