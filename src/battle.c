@@ -13,7 +13,7 @@ void start_battle(Battle *newBattle, Team *team)
         printf("A wild %s appeared!\n\n", newBattle->pokemon_b->name);
         printf("    1. Fight\n");
         printf("    2. Bag\n");
-        printf("    3. Pokemon\n");
+        printf("    3. Pokemons\n");
         printf("    4. Run\n");
         printf("\nEnter your choice: ");
         scanf("%d", &choice);
@@ -128,7 +128,6 @@ void start_battle(Battle *newBattle, Team *team)
                     choice = 0;
                     break;
                 case 2:
-                    choice = 0;
                     break;
                 default:
                     choice = 0;

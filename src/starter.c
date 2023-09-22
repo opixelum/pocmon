@@ -4,6 +4,7 @@
 #include "starter.h"
 #include "map.h"
 #include "pokemon.h"
+#include "battle.h"
 
 void history_screen()
 {
@@ -67,7 +68,7 @@ void starter_choose(char *name)
             clear_screen();
             printf("You chose Bulbizzare!\n");
             pokemoName = "Bulbizzare";
-            pokemon = create_pokemon(pokemoName, 45, 49, 49, 45, GRASS);
+            pokemon = create_pokemon(pokemoName, 45, 49, 49, 45, PLANT);
             break;
         case 2:
             clear_screen();
@@ -93,7 +94,7 @@ void starter_choose(char *name)
         }
     } while (choice < 1 || choice > 4);
 
-    Team* team = create_team();
+    Team *team = create_team();
     add_pokemon_to_team(team, pokemon);
 
     wait_for_enter();
@@ -108,4 +109,8 @@ void starter_choose(char *name)
 
     // Init the map
     mapInit();
+    Battle *battle = malloc(sizeof(Battle));
+    battle->pokemon_b = pokemon;
+
+    start_battle(battle, team);
 }
