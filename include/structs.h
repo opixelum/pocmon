@@ -20,10 +20,10 @@ TYPE;
 
 typedef enum TILE
 {
-    PLAYER = 0,
-    PATH = 1,
-    GRASS = 2,
-    obstacle = 3
+    PLAYER = 'X',
+    PATH = '.',
+    GRASS = 'W',
+    obstacle = '#'
 }
 TILE;
 
@@ -59,14 +59,6 @@ typedef struct Pokedex
     int unseen_pokemons;
 }
 Pokedex;
-
-typedef struct Map
-{
-    int columns;
-    int lines;
-    TILE **tile;
-}
-Map;
 
 typedef struct Player
 {

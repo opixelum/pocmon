@@ -10,6 +10,7 @@ void history_screen()
 
     // History
     clear_screen();
+    printf("%ld",sizeof(TILE));
     printf("Professor Chen: Hello there! Welcome to the world of Pokemon!\n");
     wait_for_enter();
     clear_screen();
@@ -99,4 +100,7 @@ void starter_choose(char *name)
 
     // Init the map
     mapInit();
+    TILE** map = getMap();
+    printf("%p\n",map);
+    displayMap(10,10,map);
 }

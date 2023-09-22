@@ -1,5 +1,5 @@
 #include "map.h"
-
+#include "cli.h"
 
 int noise2(int x, int y, int seed)
 {
@@ -63,25 +63,84 @@ int mapInit()
     }
     srand(time(NULL));
     int seed = rand();
-    for(y = 0; y < 100; y++)
+    for(y = 0; y < ROWS; y++)
     {
         float tmp;
-        for (x = 0; x < 300; x++)
+        for (x = 0; x < COLUMNS; x++)
         {
             tmp= perlin2d(x, y, 0.05, 8, seed);
-            if(tmp > 0.4 && tmp < 0.65)
-            {
-                fputc('H', f);
-            }else if(tmp <= 0.4)
-            {
-                fputc('C', f);
-            }else
-            {
-                fputc('0', f);
+            if(x==0 || y==0 || x==COLUMNS-1 || y==ROWS-1){
+                fputc(obstacle, f);
+            }else{
+                if(tmp > 0.4 && tmp < 0.65)
+                {
+                    fputc(GRASS, f);
+                }
+                else if(tmp <= 0.4)
+                {
+                    fputc(PATH, f);
+                }
+                else
+                {
+                    fputc(obstacle, f);
+                }
             }
+            
         }
         fputc('\n', f);
     }
     fclose(f);
     return 0;
+}
+
+TILE **getMap()
+{
+    TILE** map = malloc(sizeof(TILE*)*ROWS);
+    if(map == NULL)
+    {
+        printf("ALED\n");
+        return NULL;
+    }
+    FILE * f= fopen("../save/map.map", "r");
+    if(f == NULL)
+    {
+        perror("ALED FICHIER\n");
+        return NULL;
+    }
+    for (int i = 0;i < ROWS; i++)
+    {
+        map[i] = malloc(sizeof(TILE)*COLUMNS);
+        for (int j = 0;j < COLUMNS; j++)
+        {
+            map[i][j] = fgetc(f);
+        }
+        fgetc(f);
+    }
+    fclose(f);
+    return map;
+
+}
+
+void displayMap(int x, int y, TILE**map)
+{
+    clear_screen();
+    for(int i = y-12;i<y+12;i++)
+    {
+        for(int j = x-24;j<x+24;j++)
+        {
+            if(i<0 || j<0 || i>=ROWS || j>=COLUMNS)
+            {
+                printf(" ");
+            }
+            else if(j==x && i==y)
+            {
+                printf("%c",PLAYER);
+            }
+            else
+            {
+                printf("%c",map[i][j]);
+            }
+        }
+        printf("\n");
+    }
 }
