@@ -59,16 +59,21 @@ void start_battle(Battle *newBattle, Team *team)
                 // Calculate bonus
                 float bonus = bonus_types[newBattle->pokemon_b->type][team->pokemons[0]->type];
 
-                // Calculate damage
-                printf("%s used Tackle!\n", team->pokemons[0]->name);
+                // Calculate damage ennemy
+                printf("Your %s used Tackle!\n", team->pokemons[0]->name);
+                printf("It did %f damage!\n", (team->pokemons[0]->attack - newBattle->pokemon_b->defense) * bonus);
                 if (bonus > 1)
-                    printf("It's super effective!\n");
+                    printf("It's super effective!\n\n");
                 else if (bonus < 1)
-                    printf("It's not very effective...\n");
+                    printf("It's not very effective...\n\n");
                 else
-                    printf("Your attack worked!\n");
+                    printf("Your attack worked!\n\n");
 
-                newBattle->pokemon_b->hp -= (newBattle->pokemon_b->attack - team->pokemons[0]->defense) * bonus;
+                team->pokemons[0]->hp -= (team->pokemons[0]->attack - newBattle->pokemon_b->defense) * bonus;
+
+                printf("Wild %s has %d hp left!\n\n", newBattle->pokemon_b->name, newBattle->pokemon_b->hp);
+                wait_for_enter();
+
                 if (newBattle->pokemon_b->hp <= 0)
                 {
                     printf("You won!\n");
@@ -76,8 +81,10 @@ void start_battle(Battle *newBattle, Team *team)
                     return;
                 }
 
-                // Calculate damage
-                printf("%s used Tackle!\n", newBattle->pokemon_b->name);
+                // Calculate damage player
+                clear_screen();
+                printf("Wild %s used Tackle!\n", newBattle->pokemon_b->name);
+                printf("It did %f damage!\n", (newBattle->pokemon_b->attack - team->pokemons[0]->defense) * bonus);
                 if (bonus > 1)
                     printf("It's super effective!\n");
                 else if (bonus < 1)
@@ -85,7 +92,9 @@ void start_battle(Battle *newBattle, Team *team)
                 else
                     printf("His attack worked!\n");
 
-                team->pokemons[0]->hp -= (team->pokemons[0]->attack - newBattle->pokemon_b->defense) * bonus;
+                newBattle->pokemon_b->hp -= (newBattle->pokemon_b->attack - team->pokemons[0]->defense) * bonus;
+
+                printf("Your %s has %d hp left!\n\n", team->pokemons[0]->name, team->pokemons[0]->hp);
                 if (team->pokemons[0]->hp <= 0)
                 {
                     // Check if team->has more pokemons and use the next one if hp
