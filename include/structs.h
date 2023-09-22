@@ -4,24 +4,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Pokemon {
-    char* name;
-    int pv;
-    int attack;
-    int defense;
-    int speed;
-    int type;
-} Pokemon;
-
-typedef struct Team {
-    short size;
-    Pokemon** pokemons;
-} Team;
-
-typedef struct Battle {
-    Pokemon pokemonA;
-    Pokemon pokemonB;
-} Battle;
+typedef enum TYPE
+{
+    FIRE = 0,
+    WATER = 1,
+    PLANT = 2,
+    ELECTRIC = 3,
+    GROUND = 4,
+    NORMAL = 5,
+    PSY = 6,
+    FLYING = 7, 
+    STEEL = 8
+}
+TYPE;
 
 typedef enum TILE
 {
@@ -32,16 +27,45 @@ typedef enum TILE
 }
 TILE;
 
-typedef struct Pokedex {
-    Pokemon** pokemons;
-    int seenPokemons;
-    int unseenPokemons;
-} Pokedex;
-
-typedef struct Player {
+typedef struct Pokemon
+{
     char* name;
-    Team playerTeam;
-} Player;
+    int hp;
+    int attack;
+    int defense;
+    int speed;
+    TYPE type;
+}
+Pokemon;
+
+typedef struct Team
+{
+    short size;
+    Pokemon** pokemons;
+}
+Team;
+
+typedef struct Battle
+{
+    Pokemon pokemon_a;
+    Pokemon pokemon_b;
+}
+Battle;
+
+typedef struct Pokedex
+{
+    Pokemon** pokemons;
+    int seen_pokemons;
+    int unseen_pokemons;
+}
+Pokedex;
+
+typedef struct Player
+{
+    char* name;
+    Team player_team;
+}
+Player;
 
 Pokemon* create_pokemon(char* name, int pv, int attack, int defense, int speed, int type);
 Team* create_team();
