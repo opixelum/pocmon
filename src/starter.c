@@ -68,25 +68,25 @@ void starter_choose(char *name)
             clear_screen();
             printf("You chose Bulbizzare!\n");
             pokemoName = "Bulbizzare";
-            pokemon = create_pokemon(pokemoName, 45, 49, 49, 45, PLANT);
+            pokemon = create_pokemon(pokemoName, 90, 49, 24, 45, PLANT);
             break;
         case 2:
             clear_screen();
             printf("You chose Salamèche!\n");
             pokemoName = "Salamèche";
-            pokemon = create_pokemon(pokemoName, 39, 52, 43, 65, FIRE);
+            pokemon = create_pokemon(pokemoName, 78, 52, 21, 65, FIRE);
             break;
         case 3:
             clear_screen();
             printf("You chose Carapuce!\n");
             pokemoName = "Carapuce";
-            pokemon = create_pokemon(pokemoName, 44, 48, 65, 43, WATER);
+            pokemon = create_pokemon(pokemoName, 88, 48, 32, 43, WATER);
             break;
         case 4:
             clear_screen();
             printf("You chose Pikachu!\n");
             pokemoName = "Pikachu";
-            pokemon = create_pokemon(pokemoName, 35, 55, 40, 90, ELECTRIC);
+            pokemon = create_pokemon(pokemoName, 70, 55, 20, 90, ELECTRIC);
             break;
         default:
             choice = 0;
