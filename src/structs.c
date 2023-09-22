@@ -10,6 +10,7 @@ Pokemon* create_pokemon(char* name, int hp, int attack, int defense, int speed, 
     pokemon->name = malloc(strlen(name) + 1);
     strcpy(pokemon->name, name);
 
+    pokemon->initial_hp = hp;
     pokemon->hp = hp;
     pokemon->attack = attack;
     pokemon->defense = defense;
